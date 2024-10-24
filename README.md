@@ -1,4 +1,4 @@
-Check CI/CD Status: 
+Check CI/CD Status: [![CICD](https://github.com/nogibjj/kim_seijung_project6_mysql/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/kim_seijung_project6_mysql/actions/workflows/cicd.yml)
 
 # Mini-project #6
 #### Repo Title: Complex SQL Query for a MySQL Database
@@ -58,9 +58,33 @@ This project uses the Titanic passenger dataset, which is commonly used in data 
 
 There are three SQL queries in this project:
 
-1. Joining Tables: This query joins the dataset with a Ports table based on the embarkation port's code, providing detailed information on where each passenger embarked. The output of this query would include columns like PassengerId, Name, Sex, Age, Embarked, PortName, and Country. The query combines passenger details with information about the port from which they embarked.
+1. Joining Tables: This query joins the Titanic dataset with a Ports table based on the embarkation port's code (Embarked), providing detailed information on the port from which each passenger embarked. The Embarked field in the Titanic table represents the port code (C, Q, or S) where passengers boarded the ship, while the Ports table contains additional information like the full port name (PortName) and the corresponding country (Country). 
+```
+    SELECT 
+        t.PassengerId, t.Name, t.Sex, t.Age, t.Embarked, 
+        p.PortName, p.Country
+    FROM default.Titanic t
+    JOIN default.Ports p 
+    ON t.Embarked = p.PortCode;
+```
+* The query uses an INNER JOIN based on the common column Embarked from the Titanic dataset and PortCode from the Ports table. Only rows with matching port codes in both tables are included.
+* The output of this query would include columns like PassengerId, Name, Sex, Age, Embarked, PortName, and Country. The query combines passenger details with information about the port from which they embarked.
 
-2. Aggregating Data: This query calculates the average age of passengers grouped by their class, providing insights into age distribution among different classes. The output of this query would include columns Pclass and AverageAge. It shows the average age for passengers in each of the three classes (1st, 2nd, and 3rd).
+2. Aggregating Data: This query calculates the average age of passengers, grouped by their passenger class (Pclass). It helps in understanding the age distribution across different classes on the Titanic. Passenger classes represent socio-economic status, with 1st class being the highest and 3rd class being the lowest.
+```
+    SELECT Pclass, AVG(Age) AS AverageAge
+    FROM default.Titanic
+    GROUP BY Pclass;
+```
+* The query groups the dataset by the Pclass column using the GROUP BY clause and then calculates the average of the Age column for each class using the AVG function.
+* The output of this query would include columns Pclass and AverageAge. It shows the average age for passengers in each of the three classes (1st, 2nd, and 3rd).
 
-3. Sorting Data: This query sorts the Titanic dataset by fare in descending order, allowing you to identify the most expensive tickets. The output of this query would include columns like PassengerId, Name, and Fare, sorted by the Fare column in descending order. The top rows would show the passengers who paid the highest fares.
+3. Sorting Data: This query sorts the Titanic dataset by Fare in descending order, allowing you to identify passengers who paid the highest fares. Sorting by fare can reveal the range of ticket prices and identify wealthier passengers or those with the most luxurious accommodations.
+```
+    SELECT PassengerId, Name, Fare
+    FROM default.Titanic
+    ORDER BY Fare DESC;
+```
+* The query uses the ORDER BY clause with the Fare column, specifying DESC to sort the fares from highest to lowest.
+* The output of this query would include columns like PassengerId, Name, and Fare, sorted by the Fare column in descending order. The top rows would show the passengers who paid the highest fares.
 
