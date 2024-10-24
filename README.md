@@ -1,4 +1,4 @@
-Check CI/CD Status: [![CICD](https://github.com/nogibjj/kim_seijung_project6_mysql/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/kim_seijung_project6_mysql/actions/workflows/cicd.yml)
+Check CI/CD Status: [![CI](https://github.com/nogibjj/kim_seijung_project6_mysql/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/kim_seijung_project6_mysql/actions/workflows/cicd.yml)
 
 # Mini-project #6
 #### Repo Title: Complex SQL Query for a MySQL Database
@@ -54,7 +54,7 @@ This project uses the Titanic passenger dataset, which is commonly used in data 
 #### Screenshot of data in Databricks
 ![Databricks Screenshot](databricks_preview.png)
 
-## Written Explanation of the queries
+## Written Explanation of the Queries
 
 There are three SQL queries in this project:
 
